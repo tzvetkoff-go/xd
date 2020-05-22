@@ -1,0 +1,7 @@
+# OSX/MSW
+.DS_Store
+._.*
+Thumbs.db
+
+# Misc
+/tmp
