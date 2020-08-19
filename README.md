@@ -61,8 +61,7 @@ func main() {
 	// Could've been this:
 	//
 
-	if val, ok := xd.Dig(m, "data[0].attributes.title"); ok {
-		fmt.Println(val)
-	}
+	val := xd.Dig(m, "data[0].attributes.title")
+	fmt.Println(val)
 }
 ```

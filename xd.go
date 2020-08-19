@@ -5,7 +5,16 @@ import (
 )
 
 //
-// Dig returns the value at a given path or nil as first result, and true or false as second.
+// Dig returns the value at a given path or nil.
+// All sorts of errors will also result in nil.
+//
+func Dig(root interface{}, path string) interface{} {
+	val, _ := DigE(root, path)
+	return val
+}
+
+//
+// DigB returns the value at a given path or nil as first result, and true or false as second.
 // All sorts of errors will also result in nil, false.
 //
 // Example:
@@ -18,7 +27,7 @@ import (
 //  val, ok := Dig(m, "foo.bar")
 //  // val => "baz", ok => true
 //
-func Dig(root interface{}, path string) (interface{}, bool) {
+func DigB(root interface{}, path string) (interface{}, bool) {
 	if val, err := DigE(root, path); err == nil {
 		return val, true
 	}
@@ -52,6 +61,14 @@ func DigE(root interface{}, path string) (interface{}, error) {
 //
 // DigArr does the same as Dig but instead of a string key, it expects an array of keys which are not further parsed.
 //
+func DigArr(root interface{}, arr []interface{}) interface{} {
+	val, _ := DigArrE(root, arr)
+	return val
+}
+
+//
+// DigArrB does the same as DigB but instead of a string key, it expects an array of keys which are not further parsed.
+//
 // Example:
 //  m := map[string]interface{}{
 //  	"foo": map[string]interface{}{
@@ -62,7 +79,7 @@ func DigE(root interface{}, path string) (interface{}, error) {
 //  val, ok := DigArr(m, []interface{}{"foo", "bar"})
 //  // val => "baz", ok => true
 //
-func DigArr(root interface{}, arr []interface{}) (interface{}, bool) {
+func DigArrB(root interface{}, arr []interface{}) (interface{}, bool) {
 	if val, err := DigArrE(root, arr); err == nil {
 		return val, true
 	}
@@ -71,7 +88,7 @@ func DigArr(root interface{}, arr []interface{}) (interface{}, bool) {
 }
 
 //
-// DigArrE does the same as DigArr but returns an error as second result.
+// DigArrE does the same as DigArrB but returns an error as second result.
 //
 // Example:
 //  m := map[string]interface{}{

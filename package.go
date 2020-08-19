@@ -11,7 +11,7 @@
 //  	},
 //  }
 //
-//  val, ok := Dig(m, "arr[0].foo\\.bar")
+//  val, ok := DigB(m, "arr[0].foo\\.bar")
 //  // val => nil, ok => false
 //
 //  val, err := DigE(m, "arr[1].foo\\.bar")
