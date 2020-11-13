@@ -65,3 +65,7 @@ func main() {
 	fmt.Println(val)
 }
 ```
+
+## License
+
+The code is subject to the [MIT license](https://opensource.org/licenses/MIT).
